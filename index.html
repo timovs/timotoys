@@ -13,6 +13,8 @@
       background: #fff;
       color: #000;
       margin: 0;
+      position: relative;
+      min-height: 100vh;
     }
 
     .container {
@@ -21,14 +23,26 @@
       margin-left: 60px;
     }
 
-    h1 {
-      font-size: 14px;
-      font-weight: normal;
+    .logo {
+      width: auto;
+      height: 60px;
       margin-bottom: 40px;
+      display: block;
+      cursor: pointer;
     }
 
     p {
       margin-bottom: 20px;
+    }
+
+    .services {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .graphic-design, .music {
+      cursor: pointer;
+      margin-right: 10px;
     }
 
     .links a {
@@ -42,10 +56,67 @@
       text-decoration: underline;
     }
 
+    .email-form {
+      margin: 30px 0;
+    }
+
+    .email-form p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .email-form textarea {
+      width: 100%;
+      height: 24px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      overflow: hidden;
+      font-family: inherit;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: height 0.2s ease;
+
+      background-image: repeating-linear-gradient(
+        -45deg,
+        #f9f9f9,
+        #f9f9f9 10px,
+        #e0e0e0 10px,
+        #e0e0e0 20px
+      );
+      background-color: #f0f0f0;
+    }
+
+    .email-form button {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .email-form button:hover {
+      background: #333;
+    }
+
+    .spotify-embed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      z-index: 10;
+    }
+
     .footer {
       margin-top: 60px;
       font-size: 12px;
       color: #666;
+      padding-bottom: 60px;
     }
 
     @media (max-width: 600px) {
@@ -53,32 +124,118 @@
         margin-left: 20px;
         padding-top: 40px;
       }
+      .spotify-embed {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+      }
+      .footer {
+        padding-bottom: 20px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
+    <img 
+      class="logo" 
+      src="images/timotoyshoekiglogocorrect.png" 
+      data-hover="images/timotoyshoekiglogolampjes.png"
+      alt="Timo.Toys Logo"
+    >
 
-    <h1>Timo.Toys</h1>
-
-    <p>
-      Graphic design, music, or whatever you want.<br>
-      Based in Amsterdam.
-    </p>
+    <div class="services">
+      <span class="graphic-design">Graphic Design.</span><span class="music">Music.</span>
+      <br>Based in Amsterdam.
+    </div>
 
     <div class="links">
       <a href="./project1.html">No Road No Problem</a>
       <a href="./project2.html">Project Two</a>
-      <a href="./project3.html">Project Three</a>
+      <a href="./project3.html">Project Three</a> <br>
       <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="mailto:you@email.com">Email</a>
+    </div>
+
+    <div class="email-form">
+      <form action="mailto:timo.v.sark@gmail.com" method="post" enctype="text/plain">
+        <textarea name="message" placeholder="Write your message here..." required></textarea>
+        <button type="submit">Send </button>
+      </form>
     </div>
 
     <div class="footer">
-      © 2026
+      © Timo.Toys 2026
     </div>
-
   </div>
+
+  <div class="spotify-embed">
+    <iframe
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/63PLInFvurP7AdJR1fdJt2?utm_source=generator&theme=0"
+      width="100%"
+      height="352"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <script>
+    // Graphic Design hover effect
+    const graphicDesignSpan = document.querySelector('.graphic-design');
+    let graphicDesignOriginalText = graphicDesignSpan.textContent;
+
+    graphicDesignSpan.addEventListener('mouseover', function() {
+      this.textContent = '✎✐ ✎ ✐ ✎ ✐.';
+    });
+
+    graphicDesignSpan.addEventListener('mouseout', function() {
+      this.textContent = graphicDesignOriginalText;
+    });
+
+    // Music hover effect
+    const musicSpan = document.querySelector('.music');
+    let musicOriginalText = musicSpan.textContent;
+
+    musicSpan.addEventListener('mouseover', function() {
+      this.textContent = '♫⋆｡♪ ₊˚♬ ﾟ.';
+    });
+
+    musicSpan.addEventListener('mouseout', function() {
+      this.textContent = musicOriginalText;
+    });
+
+    // ✨ TEXTAREA EXPAND
+    const textarea = document.querySelector('.email-form textarea');
+
+    textarea.addEventListener('focus', () => {
+      textarea.style.height = '120px';
+    });
+
+    textarea.addEventListener('blur', () => {
+      if (textarea.value.trim() === '') {
+        textarea.style.height = '24px';
+      }
+    });
+
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    });
+
+    // ✨ LOGO HOVER SWAP
+    const logo = document.querySelector('.logo');
+    const originalSrc = logo.src;
+    const hoverSrc = logo.getAttribute('data-hover');
+
+    logo.addEventListener('mouseover', () => {
+      logo.src = hoverSrc;
+    });
+
+    logo.addEventListener('mouseout', () => {
+      logo.src = originalSrc;
+    });
+  </script>
 </body>
 </html>
