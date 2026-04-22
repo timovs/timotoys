@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Two</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #fff;
+      color: #000;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 60px 20px;
+      margin-left: 60px;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .back {
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    /* GRID */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Mobile: stack again */
+    @media (max-width: 600px) {
+      .container {
+        margin-left: 20px;
+        padding-top: 40px;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <a class="back" href="./index.html">← back</a>
+
+    <p>Project Two — short description of the work.</p>
+
+    <!-- IMAGES -->
+    <div class="image-grid">
+      <img src="images/project3-1.jpg" alt="Project 2 image 1">
+      <img src="images/project3-2.jpg" alt="Project 2 image 2">
+      <img src="images/project3-3.jpg" alt="Project 2 image 3">
+      <img src="images/project3-4.jpg" alt="Project 2 image 4">
+    </div>
+
+  </div>
+</body>
+</html>
